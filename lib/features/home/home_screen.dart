@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proyek_praktikum_2026/core/theme/app_colors.dart';
 import 'package:proyek_praktikum_2026/core/theme/app_text_style.dart';
-import 'package:proyek_praktikum_2026/features/detail/detail_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -40,6 +39,11 @@ class HomeScreen extends StatelessWidget {
     },
   ];
 
+  // TO DO LIST
+  // TODO: 1. Create a custom widget for list item
+  // TODO: 2. Create a ListView.builder to show the items
+  // TODO: 3. Handle onTap by creating a navigation to DetailScreen, using Navigator.push and MaterialPageRoute builder: (context) => DetailScreen
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,30 +52,14 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: AppColors.bluePrimary200,
         centerTitle: true,
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          final item = items[index];
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 12),
-            child: _listItem(
-              title: item['title'] ?? '',
-              desc: item['desc'] ?? '',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailScreen(
-                      title: item['title'] ?? '',
-                      desc: item['desc'] ?? '',
-                    ),
-                  ),
-                );
-              },
-            ),
-          );
-        },
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('This Is HomeScreen', style: AppTextStyle.textL),
+            _listItem(title: 'title', desc: 'desc', onTap: () {}),
+          ],
+        ),
       ),
     );
   }
@@ -81,24 +69,6 @@ class HomeScreen extends StatelessWidget {
     required String desc,
     required VoidCallback onTap,
   }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: AppColors.blueBackground,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(title, style: AppTextStyle.headingM.semiBold),
-            const SizedBox(height: 4),
-            Text(desc, style: AppTextStyle.textM),
-          ],
-        ),
-      ),
-    );
+    return SizedBox();
   }
 }

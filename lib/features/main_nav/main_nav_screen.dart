@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:proyek_praktikum_2026/core/theme/app_colors.dart';
-import 'package:proyek_praktikum_2026/core/theme/app_text_style.dart';
-import 'package:proyek_praktikum_2026/features/home/home_screen.dart';
-import 'package:proyek_praktikum_2026/features/profile/profile_screen.dart';
 
 class MainNavScreen extends StatefulWidget {
   const MainNavScreen({super.key});
@@ -12,15 +9,17 @@ class MainNavScreen extends StatefulWidget {
 }
 
 class _MainNavScreenState extends State<MainNavScreen> {
-  int selectedTab = 0;
-
-  List<Widget> pages = [HomeScreen(), ProfileScreen()];
+  // TO DO LIST
+  // TODO: 1. Create an int state for selectedPage
+  // TODO: 2. Create a List<Widget> for available pages
+  // TODO: 3. Create a custom widget for bottom nav item
+  // TODO: 4. Handle onTap
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.transparent,
-      body: IndexedStack(index: selectedTab, children: pages),
+      body: IndexedStack(),
       bottomNavigationBar: SafeArea(
         child: Container(
           height: 65,
@@ -33,22 +32,14 @@ class _MainNavScreenState extends State<MainNavScreen> {
                 _bottomNavItem(
                   icon: Icons.home,
                   text: 'Home',
-                  isSelected: selectedTab == 0,
-                  onTap: () {
-                    setState(() {
-                      selectedTab = 0;
-                    });
-                  },
+                  isSelected: false,
+                  onTap: () {},
                 ),
                 _bottomNavItem(
                   icon: Icons.person,
                   text: 'Profile',
-                  isSelected: selectedTab == 1,
-                  onTap: () {
-                    setState(() {
-                      selectedTab = 1;
-                    });
-                  },
+                  isSelected: false,
+                  onTap: () {},
                 ),
               ],
             ),
@@ -64,17 +55,6 @@ class _MainNavScreenState extends State<MainNavScreen> {
     required bool isSelected,
     required VoidCallback onTap,
   }) {
-    return GestureDetector(
-      onTap: () {
-        onTap.call();
-      },
-      child: Column(
-        children: [
-          Icon(icon, color: isSelected ? AppColors.white : AppColors.white70),
-          const SizedBox(height: 4),
-          Text(text, style: AppTextStyle.textM.white.semiBold),
-        ],
-      ),
-    );
+    return SizedBox();
   }
 }
